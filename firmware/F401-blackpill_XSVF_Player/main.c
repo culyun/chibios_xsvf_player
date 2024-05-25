@@ -41,7 +41,6 @@ BaseSequentialStream *const ost = (BaseSequentialStream *)&OSTRICHPORT;
 BaseSequentialStream *const dbg = (BaseSequentialStream *)&DEBUGPORT;
 
 #define SHELL_WA_SIZE   THD_WORKING_AREA_SIZE(2048)
-
 char history_buffer[8*64];
 char *completion_buffer[SHELL_MAX_COMPLETIONS];
 
@@ -88,7 +87,7 @@ int main(void) {
   palSetPadMode(GPIOA, 3, PAL_MODE_ALTERNATE(7));
   xsvf_init();
 
-  chprintf(dbg, "\r\nNVRAM Programmer: %i.%i \r\nSystem started. (Shell)\r\n", VMAJOR, VMINOR);
+  chprintf(dbg, "\r\nXSVF Player: %i.%i \r\nSystem started. (Shell)\r\n", VMAJOR, VMINOR);
   //chprintf(ost, "\r\nNVRAM Programmer: %i.%i \r\nSystem started. (Ostrich)\r\nTest with 'VV' - should return 'N'", VMAJOR, VMINOR);
 
   sduObjectInit(&OSTRICHPORT);

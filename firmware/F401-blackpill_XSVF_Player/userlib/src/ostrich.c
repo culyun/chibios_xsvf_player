@@ -14,6 +14,7 @@
 #include "ostrich.h"
 #include "chprintf.h"
 #include "usbcfg.h"
+#include "xsvf.h"
 
 extern BaseSequentialStream *const ost;
 extern BaseSequentialStream *const dbg;
@@ -217,6 +218,10 @@ void debug_print_state(char * text, uint8_t val){
       chprintf(dbg, "%s", text);
       chprintf(dbg, "XSVF_Xn\r\n");
       break;
+    case XSVF_Xnn:
+      chprintf(dbg, "%s", text);
+      chprintf(dbg, "XSVF_Xnn\r\n");
+      break;
     case XSVF_XnCs:
       chprintf(dbg, "%s", text);
       chprintf(dbg, "XSVF_XnCs\r\n");
@@ -236,12 +241,13 @@ void debug_print_val1(char * text, uint16_t val){
 }
 
 //extern uint8_t buffer[256];
-static THD_WORKING_AREA(waCharacterInputThread, 512);
+static THD_WORKING_AREA(waCharacterInputThread, 32768);
 static THD_FUNCTION(CharacterInputThread, arg) {
   uint8_t c;
-  uint8_t tbuf[256];
+  uint8_t tbuf[32768];
   uint8_t serial[]={10,1,2,3,4,5,6,7,8};
-  uint16_t cntdwn;
+  static uint16_t cntdwn, count;
+  uint16_t i;
   int32_t address;
   static uint8_t bankemv=0, bankemp=0, bankrw=0, bank;
   static uint8_t btemp;
@@ -249,7 +255,6 @@ static THD_FUNCTION(CharacterInputThread, arg) {
   uint8_t checksum;
   systime_t start, end;
   static uint8_t cs, temp;
-  static uint16_t i, count;
   static uint16_t zoff;
   (void)arg;
   while (true){
@@ -329,28 +334,34 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         case XSVF_X:
           cs += c;
           state = XSVF_Xn;
-          debug_print_state("Count: ", state);
+          debug_print_state("State1: ", state);
           cntdwn = 0;
-          count = 256;
-          if (c) count = (uint16_t)c;
+          count = (uint16_t)c * 256;
+          //count = (c)?(uint16_t)c:256;
           break;
         case XSVF_Xn:
           cs += c;
+          state = XSVF_Xnn;
+          debug_print_state("State2: ", state);
+          count += (uint16_t)c;
+          //if (count == 0) count = 65536;
+          break;
+        case XSVF_Xnn:
+          cs += c;
           tbuf[cntdwn++] = c;
           if (cntdwn == count){
-            debug_print_state("State2: ", state);
             state = XSVF_XnCs;
+            debug_print_state("State3: ", state);
           }          
           break;
         case XSVF_XnCs:
-          debug_print_state("State3: ", state);
           state = IDLE;
+          debug_print_state("State4: ", state);
           if (c == cs){
-            if (DEBUGLEVEL >= 1){
-              chprintf(dbg, "XSVF (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf[0], tbuf[1], tbuf[2], tbuf[3]);
-            }
-            write_xsvf(tbuf);
-            chprintf(ost, "O");
+            //if (DEBUGLEVEL >= 1){
+            //  chprintf(dbg, "XSVF (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf[0], tbuf[1], tbuf[2], tbuf[3]);
+            //}
+            if (write_xsvf(count, tbuf)) chprintf(ost, "O");
           }
           else{
             chprintf(dbg, "Checksum ERROR\r\n");

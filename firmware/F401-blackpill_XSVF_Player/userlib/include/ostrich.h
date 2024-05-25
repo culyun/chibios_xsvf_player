@@ -57,6 +57,7 @@ typedef enum {
   PINS_CnCs,    //45
   XSVF_X,
   XSVF_Xn,
+  XSVF_Xnn,
   XSVF_XnCs,
   UNHANDLED
 } char_state_t;

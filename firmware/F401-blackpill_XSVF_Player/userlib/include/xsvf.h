@@ -15,15 +15,18 @@
 #define TDI 0x40
 #define TCK 0x80
 
-#define TDI_PIN         PAL_LINE(GPIOB, 0U) // Output
-#define TDO_PIN         PAL_LINE(GPIOB, 0U) // Input
-#define TCK_PIN         PAL_LINE(GPIOB, 0U) // Output
-#define TMS_PIN         PAL_LINE(GPIOB, 0U) // Output
-
-#define TDI_IDLE   palSetLine  (TDI_PIN)
-#define TDI_ACTIVE palClearLine(TDI_PIN)
-#define TMS_IDLE   palSetLine  (TMS_PIN)
-#define TMS_ACTIVE palClearLine(TMS_PIN)
+#define TDI_Pin    13U
+#define TCK_Pin    14U
+#define TMS_Pin    15U
+#define TDI_PIN    PAL_LINE(GPIOC, TDI_Pin) // Output
+#define TDO_PIN    PAL_LINE(GPIOA, 0U) // Input
+#define TCK_PIN    PAL_LINE(GPIOC, TCK_Pin) // Output
+#define TMS_PIN    PAL_LINE(GPIOC, TMS_Pin) // Output
+#define XSVF_GPIO_BSRR (GPIOC->BSRR.W)
+#define TDI_IDLE   palClearLine  (TDI_PIN)
+#define TDI_ACTIVE palSetLine  (TDI_PIN)
+#define TMS_IDLE   palClearLine  (TMS_PIN)
+#define TMS_ACTIVE palSetLine  (TMS_PIN)
 #define TCK_IDLE   palClearLine(TCK_PIN)
 #define TCK_ACTIVE palSetLine  (TCK_PIN)
 
@@ -75,11 +78,8 @@
 
 /* return number of bytes necessary for "num" bits */
 #define BYTES(num) ((int)((num+7)>>3))
-#define READ_TDI_VALUE()	read_bytes(tdi_value,BYTES(sdr_size))
-#define READ_TDO_EXPECTED()	read_bytes(tdo_expected,BYTES(sdr_size))
-#define READ_TDO_MASK()		read_bytes(tdo_mask,BYTES(sdr_size))
 
-void write_xsvf(uint8_t * buf);
+uint16_t write_xsvf(uint16_t len, uint8_t * buf);
 void xsvf_init(void);
 
 #endif /* USERLIB_INCLUDE_XSVF_H_ */

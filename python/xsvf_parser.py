@@ -47,6 +47,22 @@ class bcolors:
 #print(f'{bcolors.OKCYAN}{bcolors.ENDC}')
 
 #----------------------------------
+def progressbar(it, prefix="", size=60, out=sys.stdout): # Python3.6+
+    count = len(it)
+    start = time.time() # time estimate start
+    def show(j):
+        x = int(size*j/count)
+        # time estimate calculation and string
+        remaining = ((time.time() - start) / j) * (count - j)        
+        mins, sec = divmod(remaining, 60) # limited to minutes
+        time_str = f"{int(mins):02}:{sec:03.1f}"
+        print(f"{prefix}[{u'█'*x}{('.'*(size-x))}] {j}/{count} Est wait {time_str}", end='\r', file=out, flush=True)
+    show(0.1) # avoid div/0 
+    for i, item in enumerate(it):
+        yield item
+        show(i+1)
+    print("\n", flush=True, file=out)
+#----------------------------------
 def read_file(fn):
     try:
         with open(fn, "rb") as f:
@@ -58,32 +74,6 @@ def read_file(fn):
         print(f'File {fn} not found!')
         exit()
 
-def write_file(data, fn):
-    if fn == '':
-        dump_data(data)
-        exit()
-    else:
-        with open(fn, "wb") as f:
-            #print(f'File open')
-            f.write(bytes(data))
-            f.close()
-
-def dump_data(data, width):
-    idx = len(data)
-    for w in range(width):
-        print (f' {w:02}  ', end = '')
-    print(f'')
-    for i in range(0, len(data), width):
-        #print(f'idx: {idx}')
-        if idx < width:
-            stop = idx
-        else:
-            stop = width
-        for j in range(0,stop):
-            print(f'{bcolors.OKCYAN}0x{data[i+j]:02X} ', end = '')
-        idx -= width
-        print(f'{bcolors.ENDC} - {(i+width):>2} ({(i+width):02X})\r')
-        print(f'{bcolors.ENDC}\r')
 #----------------------------------
 def dump_val(state, buf, pos, sdr=0):
     if sdr == None:
@@ -93,25 +83,14 @@ def dump_val(state, buf, pos, sdr=0):
         print(f'0x{itm:02X} ', end = '')
     print('')
 
-def make_checksum(data):
-    return (sum(data) & 0xff).to_bytes(1,'big')
-
-def build_message(state, buf):
-    message = bytearray(b'X') # XSVF Write
-    message += (len(buf)+4).to_bytes(1,'big') # Coplete Message Length is Length + Message + Length + Checksum
-    message += (int(x_state(state).value)).to_bytes(1,'big') # next is the state
-    message += len(buf).to_bytes(1,'big') # only XSVF Message length
-    message += (buf) # XSVF Message
-    message += make_checksum(message) # Checksum
-
-    return message
-
-def command_plus(f):
+def xsvf_parser(ser, f):
     state  = x_state.XIDLE
     start = stop = 0
     length = 0
     sdr_bytes = 0
-    for idx,itm in enumerate(f): 
+    for idx,itm in enumerate(f):
+    #for idx in progressbar(range(len(f)), "Computing: ", 40):
+        itm = f[idx]
         #print(f'Byte: 0x{itm:02X} @ pos: {idx}')
         if (state != x_state.XIDLE):
             if (idx == stop):
@@ -133,8 +112,6 @@ def command_plus(f):
                 else:
                     #print(f'Dumping: {start} - {stop}, {f[start:stop+1]}')
                     dump_val(state, f[start:stop+1], start, sdr_bytes)
-                    message = build_message(state, f[start:stop+1])
-                    dump_data(message,len(message))
                     state = x_state.XIDLE
                     #print(f'State: {x_state(state).name}')
         else:
@@ -193,14 +170,10 @@ def command_plus(f):
 
             start = idx + 1
             stop = idx + length
-    return 1;
 
-def main(ser, infile):
+def main(ser, f):
     #print(f'In Main')
-    while(1):
-        if (command_plus(infile)):
-            break;
-    return '0'
+    xsvf_parser(ser, f)
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -219,12 +192,15 @@ if __name__ == '__main__':
 
     print(f'Size of Infile: {len(f)} byte.')
     try:
-        ser = Serial(port, 115200, timeout = 1, writeTimeout = 1)
+        ser = Serial(port, 921200, timeout = 1, writeTimeout = 1)
     except IOError:
         print('Port not found!')
         exit()
 
     ser.flush()
-    df = main(ser, f)
-    
+    main(ser, f)
+    try:
+        ser.close()
+    except:
+        pass    
     #write_file(df, outfile)

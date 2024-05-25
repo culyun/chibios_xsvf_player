@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc5L9raf.s 			page 1
+ARM GAS  /tmp/ccFu8JOx.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
   55 0020 696E7400 		.ascii	"int\000"
   56 0024 03       		.uleb128 0x3
   57 0025 1C000000 		.4byte	.LASF4
-ARM GAS  /tmp/cc5L9raf.s 			page 2
+ARM GAS  /tmp/ccFu8JOx.s 			page 2
 
 
   58 0029 01       		.byte	0x1
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  112 008c 03       		.uleb128 0x3
  113 008d DD010000 		.4byte	.LASF12
  114 0091 02       		.byte	0x2
-ARM GAS  /tmp/cc5L9raf.s 			page 3
+ARM GAS  /tmp/ccFu8JOx.s 			page 3
 
 
  115 0092 4F       		.byte	0x4f
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  169 00fe 27       		.byte	0x27
  170 00ff 1D       		.byte	0x1d
  171 0100 E0000000 		.4byte	0xe0
-ARM GAS  /tmp/cc5L9raf.s 			page 4
+ARM GAS  /tmp/ccFu8JOx.s 			page 4
 
 
  172 0104 03       		.uleb128 0x3
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  226 0170 07       		.uleb128 0x7
  227 0171 BE030000 		.4byte	.LASF48
  228 0175 44       		.byte	0x44
-ARM GAS  /tmp/cc5L9raf.s 			page 5
+ARM GAS  /tmp/ccFu8JOx.s 			page 5
 
 
  229 0176 06       		.byte	0x6
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  283 01d9 5A010000 		.4byte	.LASF37
  284 01dd 06       		.byte	0x6
  285 01de AC       		.byte	0xac
-ARM GAS  /tmp/cc5L9raf.s 			page 6
+ARM GAS  /tmp/ccFu8JOx.s 			page 6
 
 
  286 01df 19       		.byte	0x19
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  340 0248 06       		.byte	0x6
  341 0249 2201     		.2byte	0x122
  342 024b 19       		.byte	0x19
-ARM GAS  /tmp/cc5L9raf.s 			page 7
+ARM GAS  /tmp/ccFu8JOx.s 			page 7
 
 
  343 024c 28010000 		.4byte	0x128
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  397 02b3 01010000 		.4byte	.LASF50
  398 02b7 06       		.byte	0x6
  399 02b8 84       		.byte	0x84
-ARM GAS  /tmp/cc5L9raf.s 			page 8
+ARM GAS  /tmp/ccFu8JOx.s 			page 8
 
 
  400 02b9 1A       		.byte	0x1a
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  454 0324 06       		.byte	0x6
  455 0325 6A01     		.2byte	0x16a
  456 0327 1A       		.byte	0x1a
-ARM GAS  /tmp/cc5L9raf.s 			page 9
+ARM GAS  /tmp/ccFu8JOx.s 			page 9
 
 
  457 0328 6C020000 		.4byte	0x26c
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  511 0392 3A040000 		.4byte	.LASF61
  512 0396 06       		.byte	0x6
  513 0397 4001     		.2byte	0x140
-ARM GAS  /tmp/cc5L9raf.s 			page 10
+ARM GAS  /tmp/ccFu8JOx.s 			page 10
 
 
  514 0399 19       		.byte	0x19
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  568 0402 5C000000 		.4byte	.LASF65
  569 0406 05       		.byte	0x5
  570 0407 60       		.byte	0x60
-ARM GAS  /tmp/cc5L9raf.s 			page 11
+ARM GAS  /tmp/ccFu8JOx.s 			page 11
 
 
  571 0408 20       		.byte	0x20
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  625 0474 A101     		.2byte	0x1a1
  626 0476 19       		.byte	0x19
  627 0477 64010000 		.4byte	0x164
-ARM GAS  /tmp/cc5L9raf.s 			page 12
+ARM GAS  /tmp/ccFu8JOx.s 			page 12
 
 
  628 047b 2C       		.byte	0x2c
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  682 04eb 00       		.byte	0
  683 04ec 05       		.uleb128 0x5
  684 04ed DC040000 		.4byte	0x4dc
-ARM GAS  /tmp/cc5L9raf.s 			page 13
+ARM GAS  /tmp/ccFu8JOx.s 			page 13
 
 
  685 04f1 12       		.uleb128 0x12
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  739 0558 0A       		.uleb128 0xa
  740 0559 723900   		.ascii	"r9\000"
  741 055c 0B       		.byte	0xb
-ARM GAS  /tmp/cc5L9raf.s 			page 14
+ARM GAS  /tmp/ccFu8JOx.s 			page 14
 
 
  742 055d A301     		.2byte	0x1a3
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  796 05c1 19       		.byte	0x19
  797 05c2 F8000000 		.4byte	0xf8
  798 05c6 00       		.byte	0
-ARM GAS  /tmp/cc5L9raf.s 			page 15
+ARM GAS  /tmp/ccFu8JOx.s 			page 15
 
 
  799 05c7 00       		.byte	0
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  853 062d A8060000 		.4byte	0x6a8
  854 0631 18       		.uleb128 0x18
  855 0632 DA050000 		.4byte	.LASF91
-ARM GAS  /tmp/cc5L9raf.s 			page 16
+ARM GAS  /tmp/ccFu8JOx.s 			page 16
 
 
  856 0636 06       		.byte	0x6
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  910 069a 08       		.uleb128 0x8
  911 069b 01010000 		.4byte	.LASF50
  912 069f 0E       		.byte	0xe
-ARM GAS  /tmp/cc5L9raf.s 			page 17
+ARM GAS  /tmp/ccFu8JOx.s 			page 17
 
 
  913 06a0 3E       		.byte	0x3e
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  967 070a 00       		.byte	0
  968 070b 08       		.uleb128 0x8
  969 070c 25020000 		.4byte	.LASF98
-ARM GAS  /tmp/cc5L9raf.s 			page 18
+ARM GAS  /tmp/ccFu8JOx.s 			page 18
 
 
  970 0710 10       		.byte	0x10
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1024 0773 08       		.uleb128 0x8
  1025 0774 D5070000 		.4byte	.LASF106
  1026 0778 10       		.byte	0x10
-ARM GAS  /tmp/cc5L9raf.s 			page 19
+ARM GAS  /tmp/ccFu8JOx.s 			page 19
 
 
  1027 0779 3E       		.byte	0x3e
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1081 07dc 38060000 		.4byte	.LASF114
  1082 07e0 10       		.byte	0x10
  1083 07e1 46       		.byte	0x46
-ARM GAS  /tmp/cc5L9raf.s 			page 20
+ARM GAS  /tmp/ccFu8JOx.s 			page 20
 
 
  1084 07e2 0D       		.byte	0xd
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1138 0854 00       		.byte	0
  1139 0855 15       		.uleb128 0x15
  1140 0856 08       		.byte	0x8
-ARM GAS  /tmp/cc5L9raf.s 			page 21
+ARM GAS  /tmp/ccFu8JOx.s 			page 21
 
 
  1141 0857 11       		.byte	0x11
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1195 08ba 12       		.byte	0x12
  1196 08bb 40       		.byte	0x40
  1197 08bc 09       		.byte	0x9
-ARM GAS  /tmp/cc5L9raf.s 			page 22
+ARM GAS  /tmp/ccFu8JOx.s 			page 22
 
 
  1198 08bd F6080000 		.4byte	0x8f6
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1252 0926 54000000 		.4byte	.LASF130
  1253 092a 13       		.byte	0x13
  1254 092b 63       		.byte	0x63
-ARM GAS  /tmp/cc5L9raf.s 			page 23
+ARM GAS  /tmp/ccFu8JOx.s 			page 23
 
 
  1255 092c 18       		.byte	0x18
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1309 099e A2090000 		.4byte	0x9a2
  1310 09a2 1B       		.uleb128 0x1b
  1311 09a3 34010000 		.4byte	0x134
-ARM GAS  /tmp/cc5L9raf.s 			page 24
+ARM GAS  /tmp/ccFu8JOx.s 			page 24
 
 
  1312 09a7 B6090000 		.4byte	0x9b6
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1366 0a1f 01010000 		.4byte	.LASF50
  1367 0a23 15       		.byte	0x15
  1368 0a24 AD       		.byte	0xad
-ARM GAS  /tmp/cc5L9raf.s 			page 25
+ARM GAS  /tmp/ccFu8JOx.s 			page 25
 
 
  1369 0a25 1A       		.byte	0x1a
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1423 0a8e 15       		.byte	0x15
  1424 0a8f BE       		.byte	0xbe
  1425 0a90 03       		.byte	0x3
-ARM GAS  /tmp/cc5L9raf.s 			page 26
+ARM GAS  /tmp/ccFu8JOx.s 			page 26
 
 
  1426 0a91 680A0000 		.4byte	0xa68
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1480 0aff 19       		.byte	0x19
  1481 0b00 890A0000 		.4byte	0xa89
  1482 0b04 3C       		.byte	0x3c
-ARM GAS  /tmp/cc5L9raf.s 			page 27
+ARM GAS  /tmp/ccFu8JOx.s 			page 27
 
 
  1483 0b05 0B       		.uleb128 0xb
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1537 0b6c 05       		.uleb128 0x5
  1538 0b6d 600B0000 		.4byte	0xb60
  1539 0b71 20       		.uleb128 0x20
-ARM GAS  /tmp/cc5L9raf.s 			page 28
+ARM GAS  /tmp/ccFu8JOx.s 			page 28
 
 
  1540 0b72 D8040000 		.4byte	.LASF155
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1594 0bdf 16       		.byte	0x16
  1595 0be0 C1       		.byte	0xc1
  1596 0be1 09       		.byte	0x9
-ARM GAS  /tmp/cc5L9raf.s 			page 29
+ARM GAS  /tmp/ccFu8JOx.s 			page 29
 
 
  1597 0be2 34010000 		.4byte	0x134
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1651 0c4f 22       		.uleb128 0x22
  1652 0c50 666E3400 		.ascii	"fn4\000"
  1653 0c54 16       		.byte	0x16
-ARM GAS  /tmp/cc5L9raf.s 			page 30
+ARM GAS  /tmp/ccFu8JOx.s 			page 30
 
 
  1654 0c55 8B       		.byte	0x8b
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1708 0cbc 703200   		.ascii	"p2\000"
  1709 0cbf 16       		.byte	0x16
  1710 0cc0 7F       		.byte	0x7f
-ARM GAS  /tmp/cc5L9raf.s 			page 31
+ARM GAS  /tmp/ccFu8JOx.s 			page 31
 
 
  1711 0cc1 09       		.byte	0x9
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1765 0d2d 22       		.uleb128 0x22
  1766 0d2e 666E3100 		.ascii	"fn1\000"
  1767 0d32 16       		.byte	0x16
-ARM GAS  /tmp/cc5L9raf.s 			page 32
+ARM GAS  /tmp/ccFu8JOx.s 			page 32
 
 
  1768 0d33 64       		.byte	0x64
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1822 0da3 05       		.uleb128 0x5
  1823 0da4 930D0000 		.4byte	0xd93
  1824 0da8 27       		.uleb128 0x27
-ARM GAS  /tmp/cc5L9raf.s 			page 33
+ARM GAS  /tmp/ccFu8JOx.s 			page 33
 
 
  1825 0da9 A5080000 		.4byte	.LASF165
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1879 0e1d 0F       		.byte	0xf
  1880 0e1e 6101     		.2byte	0x161
  1881 0e20 14       		.byte	0x14
-ARM GAS  /tmp/cc5L9raf.s 			page 34
+ARM GAS  /tmp/ccFu8JOx.s 			page 34
 
 
  1882 0e21 2A       		.uleb128 0x2a
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1936 001d 03       		.uleb128 0x3
  1937 001e 0E       		.uleb128 0xe
  1938 001f 3A       		.uleb128 0x3a
-ARM GAS  /tmp/cc5L9raf.s 			page 35
+ARM GAS  /tmp/ccFu8JOx.s 			page 35
 
 
  1939 0020 0B       		.uleb128 0xb
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  1993 0056 03       		.uleb128 0x3
  1994 0057 0E       		.uleb128 0xe
  1995 0058 3A       		.uleb128 0x3a
-ARM GAS  /tmp/cc5L9raf.s 			page 36
+ARM GAS  /tmp/ccFu8JOx.s 			page 36
 
 
  1996 0059 0B       		.uleb128 0xb
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2050 008f 39       		.uleb128 0x39
  2051 0090 0B       		.uleb128 0xb
  2052 0091 49       		.uleb128 0x49
-ARM GAS  /tmp/cc5L9raf.s 			page 37
+ARM GAS  /tmp/ccFu8JOx.s 			page 37
 
 
  2053 0092 13       		.uleb128 0x13
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2107 00c8 11       		.uleb128 0x11
  2108 00c9 34       		.uleb128 0x34
  2109 00ca 00       		.byte	0
-ARM GAS  /tmp/cc5L9raf.s 			page 38
+ARM GAS  /tmp/ccFu8JOx.s 			page 38
 
 
  2110 00cb 03       		.uleb128 0x3
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2164 0101 13       		.uleb128 0x13
  2165 0102 01       		.byte	0x1
  2166 0103 0B       		.uleb128 0xb
-ARM GAS  /tmp/cc5L9raf.s 			page 39
+ARM GAS  /tmp/ccFu8JOx.s 			page 39
 
 
  2167 0104 0B       		.uleb128 0xb
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2221 013a 00       		.byte	0
  2222 013b 00       		.byte	0
  2223 013c 19       		.uleb128 0x19
-ARM GAS  /tmp/cc5L9raf.s 			page 40
+ARM GAS  /tmp/ccFu8JOx.s 			page 40
 
 
  2224 013d 34       		.uleb128 0x34
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2278 0173 49       		.uleb128 0x49
  2279 0174 13       		.uleb128 0x13
  2280 0175 38       		.uleb128 0x38
-ARM GAS  /tmp/cc5L9raf.s 			page 41
+ARM GAS  /tmp/ccFu8JOx.s 			page 41
 
 
  2281 0176 0B       		.uleb128 0xb
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2335 01ac 0E       		.uleb128 0xe
  2336 01ad 3A       		.uleb128 0x3a
  2337 01ae 0B       		.uleb128 0xb
-ARM GAS  /tmp/cc5L9raf.s 			page 42
+ARM GAS  /tmp/ccFu8JOx.s 			page 42
 
 
  2338 01af 3B       		.uleb128 0x3b
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2392 01e5 13       		.uleb128 0x13
  2393 01e6 00       		.byte	0
  2394 01e7 00       		.byte	0
-ARM GAS  /tmp/cc5L9raf.s 			page 43
+ARM GAS  /tmp/ccFu8JOx.s 			page 43
 
 
  2395 01e8 25       		.uleb128 0x25
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2449 021e 0E       		.uleb128 0xe
  2450 021f 3A       		.uleb128 0x3a
  2451 0220 0B       		.uleb128 0xb
-ARM GAS  /tmp/cc5L9raf.s 			page 44
+ARM GAS  /tmp/ccFu8JOx.s 			page 44
 
 
  2452 0221 3B       		.uleb128 0x3b
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2506 0257 00       		.byte	0
  2507 0258 00       		.byte	0
  2508              		.section	.gnu.debuglto_.debug_line,"e",%progbits
-ARM GAS  /tmp/cc5L9raf.s 			page 45
+ARM GAS  /tmp/ccFu8JOx.s 			page 45
 
 
  2509              	.Ldebug_line0:
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2543      6962696F 
  2543      735F7472 
  2543      756E6B2F 
-ARM GAS  /tmp/cc5L9raf.s 			page 46
+ARM GAS  /tmp/ccFu8JOx.s 			page 46
 
 
  2544 010c 00       		.byte	0
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2559      392E322E 
  2559      312F696E 
  2559      636C7564 
-ARM GAS  /tmp/cc5L9raf.s 			page 47
+ARM GAS  /tmp/ccFu8JOx.s 			page 47
 
 
  2560 02b3 00       		.byte	0
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2594      656D5F73 
  2594      746D3332 
  2594      66347878 
-ARM GAS  /tmp/cc5L9raf.s 			page 48
+ARM GAS  /tmp/ccFu8JOx.s 			page 48
 
 
  2594      2E6800
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2631 03ae 05       		.uleb128 0x5
  2632 03af 00       		.uleb128 0
  2633 03b0 00       		.uleb128 0
-ARM GAS  /tmp/cc5L9raf.s 			page 49
+ARM GAS  /tmp/ccFu8JOx.s 			page 49
 
 
  2634 03b1 73746461 		.ascii	"stdarg.h\000"
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2669      795F6C69 
  2669      73745F74 
  2669      00
-ARM GAS  /tmp/cc5L9raf.s 			page 50
+ARM GAS  /tmp/ccFu8JOx.s 			page 50
 
 
  2670              	.LASF4:
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2697      65642069 
  2698              	.LASF85:
  2699 00ab 65786974 		.ascii	"exitcode\000"
-ARM GAS  /tmp/cc5L9raf.s 			page 51
+ARM GAS  /tmp/ccFu8JOx.s 			page 51
 
 
  2699      636F6465 
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2725 013e 76746C69 		.ascii	"vtlist\000"
  2725      737400
  2726              	.LASF169:
-ARM GAS  /tmp/cc5L9raf.s 			page 52
+ARM GAS  /tmp/ccFu8JOx.s 			page 52
 
 
  2727 0145 706F7274 		.ascii	"port_unlock\000"
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2754              	.LASF147:
  2755 01ef 6D62785F 		.ascii	"mbx_list\000"
  2755      6C697374 
-ARM GAS  /tmp/cc5L9raf.s 			page 53
+ARM GAS  /tmp/ccFu8JOx.s 			page 53
 
 
  2755      00
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2779      6D763765 
  2780 02f2 6572202D 		.ascii	"er -falign-functions=16 -ffunction-sections -fdata-"
  2780      66616C69 
-ARM GAS  /tmp/cc5L9raf.s 			page 54
+ARM GAS  /tmp/ccFu8JOx.s 			page 54
 
 
  2780      676E2D66 
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2807      72656673 
  2807      00
  2808              	.LASF144:
-ARM GAS  /tmp/cc5L9raf.s 			page 55
+ARM GAS  /tmp/ccFu8JOx.s 			page 55
 
 
  2809 03b5 6275665F 		.ascii	"buf_list\000"
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2838              	.LASF44:
  2839 043f 7265616C 		.ascii	"realprio\000"
  2839      7072696F 
-ARM GAS  /tmp/cc5L9raf.s 			page 56
+ARM GAS  /tmp/ccFu8JOx.s 			page 56
 
 
  2839      00
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2862              	.LASF156:
  2863 04f2 63684465 		.ascii	"chDelegateCallVeneer\000"
  2863      6C656761 
-ARM GAS  /tmp/cc5L9raf.s 			page 57
+ARM GAS  /tmp/ccFu8JOx.s 			page 57
 
 
  2863      74654361 
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2890              	.LASF103:
  2891 058a 74687265 		.ascii	"threadsize\000"
  2891      61647369 
-ARM GAS  /tmp/cc5L9raf.s 			page 58
+ARM GAS  /tmp/ccFu8JOx.s 			page 58
 
 
  2891      7A6500
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2919      00
  2920              	.LASF59:
  2921 061a 63685F76 		.ascii	"ch_virtual_timer\000"
-ARM GAS  /tmp/cc5L9raf.s 			page 59
+ARM GAS  /tmp/ccFu8JOx.s 			page 59
 
 
  2921      69727475 
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2945      00
  2946              	.LASF34:
  2947 06b0 6F6C6465 		.ascii	"older\000"
-ARM GAS  /tmp/cc5L9raf.s 			page 60
+ARM GAS  /tmp/ccFu8JOx.s 			page 60
 
 
  2947      7200
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2970      73706174 
  2970      636800
  2971              	.LASF82:
-ARM GAS  /tmp/cc5L9raf.s 			page 61
+ARM GAS  /tmp/ccFu8JOx.s 			page 61
 
 
  2972 0784 6F666673 		.ascii	"offset\000"
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  2998 0816 64656C65 		.ascii	"delegate_fn0_t\000"
  2998      67617465 
  2998      5F666E30 
-ARM GAS  /tmp/cc5L9raf.s 			page 62
+ARM GAS  /tmp/ccFu8JOx.s 			page 62
 
 
  2998      5F7400
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3020      73746174 
  3020      6500
  3021              	.LASF178:
-ARM GAS  /tmp/cc5L9raf.s 			page 63
+ARM GAS  /tmp/ccFu8JOx.s 			page 63
 
 
  3022 08c0 63685379 		.ascii	"chSysUnlock\000"
@@ -3741,13 +3741,13 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3030 08ed 6D74786C 		.ascii	"mtxlist\000"
  3030      69737400 
  3031              		.text
- 3032              		.section	.gnu.lto_.profile.faf52a9a02a60471,"e",%progbits
+ 3032              		.section	.gnu.lto_.profile.a64513c06e13f8cc,"e",%progbits
  3033 0000 789CE360 		.ascii	"x\234\343``\004B \000\000\000]\000\013"
  3033      60044220 
  3033      0000005D 
  3033      000B
  3034              		.text
- 3035              		.section	.gnu.lto_.icf.faf52a9a02a60471,"e",%progbits
+ 3035              		.section	.gnu.lto_.icf.a64513c06e13f8cc,"e",%progbits
  3036 0000 789CE360 		.ascii	"x\234\343``d0b@\000\016\206\2069\013\367r3^Y\275x\037"
  3036      60643062 
  3036      40000E86 
@@ -3767,7 +3767,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3039      000060CC 
  3039      180C
  3040              		.text
- 3041              		.section	.gnu.lto_.jmpfuncs.faf52a9a02a60471,"e",%progbits
+ 3041              		.section	.gnu.lto_.jmpfuncs.a64513c06e13f8cc,"e",%progbits
  3042 0000 789C8D90 		.ascii	"x\234\215\2201\016\3020\014E\375m\027\262q\200.\235"
  3042      310EC230 
  3042      0C45FD6D 
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3043      074C9C84 
  3043      2B7001A4 
  3043      F023D42A 
-ARM GAS  /tmp/cc5L9raf.s 			page 64
+ARM GAS  /tmp/ccFu8JOx.s 			page 64
 
 
  3044 0026 81163592 		.ascii	"\201\0265\222%\347\373\371\353'A W\310|\202\200g4\221"
@@ -3815,7 +3815,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3050      78C91B78 
  3050      D65EF7
  3051              		.text
- 3052              		.section	.gnu.lto_.inline.faf52a9a02a60471,"e",%progbits
+ 3052              		.section	.gnu.lto_.inline.a64513c06e13f8cc,"e",%progbits
  3053 0000 789C7D90 		.ascii	"x\234}\2201\016\3020\014E\177\234\224\206\266 (p\255"
  3053      310EC230 
  3053      0C457F9C 
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3057 0046 6F80015F 		.ascii	"o\200\001_\236\226$)\300LD\025,'\317)0\233\012\027\034"
  3057      9E962429 
  3057      C04C4415 
-ARM GAS  /tmp/cc5L9raf.s 			page 65
+ARM GAS  /tmp/ccFu8JOx.s 			page 65
 
 
  3057      2C27CF29 
@@ -3868,7 +3868,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3062      A69F195F 
  3062      1D945168 
  3063              		.text
- 3064              		.section	.gnu.lto_.pureconst.faf52a9a02a60471,"e",%progbits
+ 3064              		.section	.gnu.lto_.pureconst.a64513c06e13f8cc,"e",%progbits
  3065 0000 789C05C1 		.ascii	"x\234\005\301\201\001\000\020\014\304\300GJW\260\271"
  3065      81010010 
  3065      0CC4C047 
@@ -3880,7 +3880,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3066      B13E
  3067 0022 4EEE0617 		.ascii	"N\356\006\027"
  3068              		.text
- 3069              		.section	.gnu.lto___ch_delegate_fn0.faf52a9a02a60471,"e",%progbits
+ 3069              		.section	.gnu.lto___ch_delegate_fn0.a64513c06e13f8cc,"e",%progbits
  3070 0000 789C5D50 		.ascii	"x\234]P\317KTQ\024>\337;\327\347\020\026\010A\340Cp"
  3070      CF4B5451 
  3070      143EDF3B 
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3072      8AD0
  3073 0038 CA9F4F85 		.ascii	"\312\237O\205\250\026-L\205Y(\344\242\"E]\270\010\002"
  3073      A8162D4C 
-ARM GAS  /tmp/cc5L9raf.s 			page 66
+ARM GAS  /tmp/ccFu8JOx.s 			page 66
 
 
  3073      855928E4 
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3084      427B7A36 
  3084      68C3F75E 
  3085 0116 5C162285 		.ascii	"\\\026\"\205\015\351\247K:\027\0153\351\254\0066$\032"
-ARM GAS  /tmp/cc5L9raf.s 			page 67
+ARM GAS  /tmp/ccFu8JOx.s 			page 67
 
 
  3085      0DE9A74B 
@@ -4002,7 +4002,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3093      BDFD0742 
  3093      40A93B
  3094              		.text
- 3095              		.section	.gnu.lto___ch_delegate_fn1.faf52a9a02a60471,"e",%progbits
+ 3095              		.section	.gnu.lto___ch_delegate_fn1.a64513c06e13f8cc,"e",%progbits
  3096 0000 789C6591 		.ascii	"x\234e\221Mh\023Q\020\307\347\377f\273Y\277\002\212"
  3096      4D681351 
  3096      10C7E7FF 
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3098      7E406BBC 
  3098      A8454858 
  3098      5B233DA8 
-ARM GAS  /tmp/cc5L9raf.s 			page 68
+ARM GAS  /tmp/ccFu8JOx.s 			page 68
 
 
  3099 003b 51108DC6 		.ascii	"Q\020\215\306\325\252\250\010B\351%\227\034<T\224\322"
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3110      3C502F95 
  3110      7FDEDB61 
  3110      D4527EB1 
-ARM GAS  /tmp/cc5L9raf.s 			page 69
+ARM GAS  /tmp/ccFu8JOx.s 			page 69
 
 
  3111 010c B8777A43 		.ascii	"\270wzCm\341\325V\365\203@\375\345\341\372\215]\266"
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3122      90EA4F8C 
  3122      A4DC5892 
  3122      5A12997E 
-ARM GAS  /tmp/cc5L9raf.s 			page 70
+ARM GAS  /tmp/ccFu8JOx.s 			page 70
 
 
  3122      77785F53 
@@ -4149,7 +4149,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3123      31D4
  3124 01fd C5       		.ascii	"\305"
  3125              		.text
- 3126              		.section	.gnu.lto___ch_delegate_fn2.faf52a9a02a60471,"e",%progbits
+ 3126              		.section	.gnu.lto___ch_delegate_fn2.a64513c06e13f8cc,"e",%progbits
  3127 0000 789C6D91 		.ascii	"x\234m\221Ah\023Q\020\206gv6\311\0225\240\010RC%\007"
  3127      41681351 
  3127      10866776 
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3136 00b5 8E110510 		.ascii	"\216\021\005\0208\336\254\374\252\272\272\356+\225T"
  3136      38DEACFC 
  3136      AABABAEE 
-ARM GAS  /tmp/cc5L9raf.s 			page 71
+ARM GAS  /tmp/ccFu8JOx.s 			page 71
 
 
  3136      2B9554
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3148      74801C69 
  3148      7CB54C6A 
  3148      7BDD90
-ARM GAS  /tmp/cc5L9raf.s 			page 72
+ARM GAS  /tmp/ccFu8JOx.s 			page 72
 
 
  3149 0197 F7B421E0 		.ascii	"\367\264!\340\"\272\233K\304\245%t_f\233\244G8\351/"
@@ -4304,7 +4304,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3157      C01F90
  3158 022e 1EFBBD   		.ascii	"\036\373\275"
  3159              		.text
- 3160              		.section	.gnu.lto___ch_delegate_fn3.faf52a9a02a60471,"e",%progbits
+ 3160              		.section	.gnu.lto___ch_delegate_fn3.a64513c06e13f8cc,"e",%progbits
  3161 0000 789C7592 		.ascii	"x\234u\222MHTQ\024\307\317y\3479>\206q\026\022\204\014"
  3161      4D485451 
  3161      14C7CF79 
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3163      98B16D5E 
  3163      3F2A411B 
  3163      3786150D 
-ARM GAS  /tmp/cc5L9raf.s 			page 73
+ARM GAS  /tmp/ccFu8JOx.s 			page 73
 
 
  3163      2F1DC576 
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3175 00fe 0F893537 		.ascii	"\017\21157]\326\364\356\227W\351\222\002\375\273\362"
  3175      5DD6F4EE 
  3175      9757E992 
-ARM GAS  /tmp/cc5L9raf.s 			page 74
+ARM GAS  /tmp/ccFu8JOx.s 			page 74
 
 
  3175      02FDBBF2 
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3186      7D16
  3187 01da C4C7A57D 		.ascii	"\304\307\245}\016N\362\261\264\317\011\340\234\200\226"
  3187      0E4EF2B1 
-ARM GAS  /tmp/cc5L9raf.s 			page 75
+ARM GAS  /tmp/ccFu8JOx.s 			page 75
 
 
  3187      B4CF09E0 
@@ -4476,7 +4476,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3194      2F371B24 
  3194      9E
  3195              		.text
- 3196              		.section	.gnu.lto___ch_delegate_fn4.faf52a9a02a60471,"e",%progbits
+ 3196              		.section	.gnu.lto___ch_delegate_fn4.a64513c06e13f8cc,"e",%progbits
  3197 0000 789C75D2 		.ascii	"x\234u\322_HSQ\034\007\360\337\357\376\356\346m\255"
  3197      5F485351 
  3197      1C07F0DF 
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3200      A2518CF0 
  3200      414822C9 
  3201 004b 840265F6 		.ascii	"\204\002e\366\373\035\027j\233\227{\340\236s\177\237"
-ARM GAS  /tmp/cc5L9raf.s 			page 76
+ARM GAS  /tmp/ccFu8JOx.s 			page 76
 
 
  3201      FB1D176A 
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3212      D9
  3213 0127 F57D3B99 		.ascii	"\365};\231n\327\264\035\3746\276\341\241+\332n\335O"
  3213      6ED7B41D 
-ARM GAS  /tmp/cc5L9raf.s 			page 77
+ARM GAS  /tmp/ccFu8JOx.s 			page 77
 
 
  3213      FC36BEE1 
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3224      1CA7
  3225 01fa CEF99D29 		.ascii	"\316\371\235)\307\3229\031\340\224@K\303\355L\320u\024"
  3225      C7D23919 
-ARM GAS  /tmp/cc5L9raf.s 			page 78
+ARM GAS  /tmp/ccFu8JOx.s 			page 78
 
 
  3225      E094404B 
@@ -4660,7 +4660,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3232      9F4E
  3233 0289 BC       		.ascii	"\274"
  3234              		.text
- 3235              		.section	.gnu.lto_chDelegateCallVeneer.faf52a9a02a60471,"e",%progbits
+ 3235              		.section	.gnu.lto_chDelegateCallVeneer.a64513c06e13f8cc,"e",%progbits
  3236 0000 789C8553 		.ascii	"x\234\205S[HTQ\024=\373\356\353<t,\210PA\004?\022\261"
  3236      5B485451 
  3236      143DFBEE 
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3238      5610848F 
  3239 003e ABD6E42B 		.ascii	"\253\326\344++\013b\010\374P+(\011\0123\311\321i\237"
  3239      2B0B6208 
-ARM GAS  /tmp/cc5L9raf.s 			page 79
+ARM GAS  /tmp/ccFu8JOx.s 			page 79
 
 
  3239      FC502B28 
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3250      4CDE6168 
  3250      87086359 
  3251 011e 099CE10F 		.ascii	"\011\234\341\017\267\371e=\011\023\265\255\367\207B"
-ARM GAS  /tmp/cc5L9raf.s 			page 80
+ARM GAS  /tmp/ccFu8JOx.s 			page 80
 
 
  3251      B7F9653D 
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3262      340B
  3263 01ee D3E20413 		.ascii	"\323\342\004\023\204\200\303\211*F\013\331^]\366\033"
  3263      8480C389 
-ARM GAS  /tmp/cc5L9raf.s 			page 81
+ARM GAS  /tmp/ccFu8JOx.s 			page 81
 
 
  3263      2A460BD9 
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3275      8CB174AB 
  3275      953FB673 
  3275      45F94565 
-ARM GAS  /tmp/cc5L9raf.s 			page 82
+ARM GAS  /tmp/ccFu8JOx.s 			page 82
 
 
  3276 02ce DC72C7A5 		.ascii	"\334r\307\245\322\013\351eNz\212\213\362\323\235\016"
@@ -4881,7 +4881,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3280 030d 00D23B8C 		.ascii	"\000\322;\214V"
  3280      56
  3281              		.text
- 3282              		.section	.gnu.lto_chDelegateDispatch.faf52a9a02a60471,"e",%progbits
+ 3282              		.section	.gnu.lto_chDelegateDispatch.a64513c06e13f8cc,"e",%progbits
  3283 0000 789C8D56 		.ascii	"x\234\215V\353OSg\030\177\237\363\036\332S\021e\314"
  3283      EB4F5367 
  3283      187F9FF3 
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3289      00DB22C1 
  3289      16D8
  3290 0087 C9AB389C 		.ascii	"\311\2538\234)\351?)\315;\200;j\270j8u\233Z<\335\317"
-ARM GAS  /tmp/cc5L9raf.s 			page 83
+ARM GAS  /tmp/ccFu8JOx.s 			page 83
 
 
  3290      29E93F29 
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3302 015a 3CF40FC8 		.ascii	"<\364\017\310\012u\246\204\325\221\321\022,Ifh\344i"
  3302      0A75A684 
  3302      D591D112 
-ARM GAS  /tmp/cc5L9raf.s 			page 84
+ARM GAS  /tmp/ccFu8JOx.s 			page 84
 
 
  3302      2C496668 
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3313      FCDC
  3314 0233 0417A94C 		.ascii	"\004\027\251Lr\274L\227`..\347\234\312$\324\261\333"
  3314      72BC4C97 
-ARM GAS  /tmp/cc5L9raf.s 			page 85
+ARM GAS  /tmp/ccFu8JOx.s 			page 85
 
 
  3314      602E2EE7 
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3326 0315 F6E04F28 		.ascii	"\366\340O(\242\227\"M\224\223\214Ib\010\020\244\307"
  3326      A297224D 
  3326      94938C49 
-ARM GAS  /tmp/cc5L9raf.s 			page 86
+ARM GAS  /tmp/ccFu8JOx.s 			page 86
 
 
  3326      620810A4 
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3338      23A88718 
  3338      3B5D57FD 
  3338      DBDF4C9E 
-ARM GAS  /tmp/cc5L9raf.s 			page 87
+ARM GAS  /tmp/ccFu8JOx.s 			page 87
 
 
  3338      7F50
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3350 04c7 502CF658 		.ascii	"P,\366XRk\370\330G\377|\3409\365\005,%\302\374|\012"
  3350      526BF8D8 
  3350      47FF7CE0 
-ARM GAS  /tmp/cc5L9raf.s 			page 88
+ARM GAS  /tmp/ccFu8JOx.s 			page 88
 
 
  3350      39F5052C 
@@ -5278,10 +5278,10 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3361      9BD97F
  3362 05a7 F0446306 		.ascii	"\360Dc\006"
  3363              		.text
-ARM GAS  /tmp/cc5L9raf.s 			page 89
+ARM GAS  /tmp/ccFu8JOx.s 			page 89
 
 
- 3364              		.section	.gnu.lto_chDelegateDispatchTimeout.faf52a9a02a60471,"e",%progbits
+ 3364              		.section	.gnu.lto_chDelegateDispatchTimeout.a64513c06e13f8cc,"e",%progbits
  3365 0000 789C8D56 		.ascii	"x\234\215VmL\223W\024\276\347\275/\264\024P\306\014"
  3365      6D4C9357 
  3365      14BEE7BD 
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3376      F33F7551 
  3376      8138D1DA 
  3376      0DF1
-ARM GAS  /tmp/cc5L9raf.s 			page 90
+ARM GAS  /tmp/ccFu8JOx.s 			page 90
 
 
  3377 00d2 500FF184 		.ascii	"P\017\361\204\375\301\031X\214\326\367\212\354}\363"
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3388      2FBD04C9 
  3388      B5AD211E 
  3388      E9C5
-ARM GAS  /tmp/cc5L9raf.s 			page 91
+ARM GAS  /tmp/ccFu8JOx.s 			page 91
 
 
  3389 01a6 CB5D58B9 		.ascii	"\313]X\271\030\367\350@gJ\024 \341\241\002~\251(~\011"
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3400      DB6810CC 
  3400      6B8FB917 
  3400      CAAD9D
-ARM GAS  /tmp/cc5L9raf.s 			page 92
+ARM GAS  /tmp/ccFu8JOx.s 			page 92
 
 
  3401 0285 141505D7 		.ascii	"\024\025\005\327\025\330q\307\341\315\204\323\313B\253"
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3412      E49D708E 
  3412      6E67
  3413 0356 68E80091 		.ascii	"h\350\000\221\361}\2373\317\363\340\241{\355\305\016"
-ARM GAS  /tmp/cc5L9raf.s 			page 93
+ARM GAS  /tmp/ccFu8JOx.s 			page 93
 
 
  3413      F17D9F33 
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3424      7685B24E 
  3424      C25B8AAF 
  3425 0437 F116E1DF 		.ascii	"\361\026\341\3375\372KYuTn\234}\220\327}a\005[\312\302"
-ARM GAS  /tmp/cc5L9raf.s 			page 94
+ARM GAS  /tmp/ccFu8JOx.s 			page 94
 
 
  3425      35FA4B59 
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3436      F2E6E9
  3437 050b E9F8A97D 		.ascii	"\351\370\251}\236\237\272\371\010\207AV\017<\2539U\325"
  3437      9E9FBAF9 
-ARM GAS  /tmp/cc5L9raf.s 			page 95
+ARM GAS  /tmp/ccFu8JOx.s 			page 95
 
 
  3437      08874156 
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3449      F5A66DD6 
  3449      D8198F53 
  3450 05e5 56AE787F 		.ascii	"V\256x\177\343\362\214\225\204\232\365V\2523f\013\326"
-ARM GAS  /tmp/cc5L9raf.s 			page 96
+ARM GAS  /tmp/ccFu8JOx.s 			page 96
 
 
  3450      E3F28C95 
@@ -5740,7 +5740,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3457      F21FE5
  3458 0674 D6E008   		.ascii	"\326\340\010"
  3459              		.text
- 3460              		.section	.gnu.lto_.symbol_nodes.faf52a9a02a60471,"e",%progbits
+ 3460              		.section	.gnu.lto_.symbol_nodes.a64513c06e13f8cc,"e",%progbits
  3461 0000 789C75D0 		.ascii	"x\234u\320=n\0021\020\005\340\3477\336\365\262\006)"
  3461      3D6E0231 
  3461      1005E0E7 
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3464 0033 EA693EBB 		.ascii	"\352i>\273\230\327\300\341\206\000\270\245b\221\306"
  3464      98D7C0E1 
  3464      8600B8A5 
-ARM GAS  /tmp/cc5L9raf.s 			page 97
+ARM GAS  /tmp/ccFu8JOx.s 			page 97
 
 
  3464      6291C6
@@ -5800,13 +5800,13 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3472      800B34
  3473 00cd B2A6AA   		.ascii	"\262\246\252"
  3474              		.text
- 3475              		.section	.gnu.lto_.refs.faf52a9a02a60471,"e",%progbits
+ 3475              		.section	.gnu.lto_.refs.a64513c06e13f8cc,"e",%progbits
  3476 0000 789CE360 		.ascii	"x\234\343``\004B \000\000\000]\000\013"
  3476      60044220 
  3476      0000005D 
  3476      000B
  3477              		.text
- 3478              		.section	.gnu.lto_.decls.faf52a9a02a60471,"e",%progbits
+ 3478              		.section	.gnu.lto_.decls.a64513c06e13f8cc,"e",%progbits
  3479 0000 789CAD5A 		.ascii	"x\234\255ZyTTW\232\257\373n\025\265\260\0314\035;fN"
  3479      79545457 
  3479      9AAFFB6E 
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3480      CF743AE9 
  3480      D39D9E
  3481 0028 76CE4C9C 		.ascii	"v\316L\234LN\317\314\351\352\012V\220\204m\250B\315"
-ARM GAS  /tmp/cc5L9raf.s 			page 98
+ARM GAS  /tmp/ccFu8JOx.s 			page 98
 
 
  3481      4C4ECFCC 
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3492      14607C65 
  3492      05A3D006 
  3493 0108 26E866F1 		.ascii	"&\350f\361\030\031\002\214?Z\301(\003\214\015\3530\214"
-ARM GAS  /tmp/cc5L9raf.s 			page 99
+ARM GAS  /tmp/ccFu8JOx.s 			page 99
 
 
  3493      1819028C 
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3504      27F76347 
  3504      23731CF1 
  3505 01df 54373139 		.ascii	"T719\303sc4\321K\0112\030\220T\202J\320\026t\015m\221"
-ARM GAS  /tmp/cc5L9raf.s 			page 100
+ARM GAS  /tmp/ccFu8JOx.s 			page 100
 
 
  3505      C3736334 
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3516      112A1C82 
  3516      D8
  3517 02be 00CD9F2B 		.ascii	"\000\315\237+\266\267\036@\253\325\000\356\244\335\177"
-ARM GAS  /tmp/cc5L9raf.s 			page 101
+ARM GAS  /tmp/ccFu8JOx.s 			page 101
 
 
  3517      B6B71E40 
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3528      365A2778 
  3529 0393 3A41B01A 		.ascii	":A\260\032[[\375\026\007\263\231\032v>\254\336\011G"
  3529      5B5BFD16 
-ARM GAS  /tmp/cc5L9raf.s 			page 102
+ARM GAS  /tmp/ccFu8JOx.s 			page 102
 
 
  3529      07B3991A 
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3540      E818A88B 
  3540      713EB76D 
  3540      455576B6 
-ARM GAS  /tmp/cc5L9raf.s 			page 103
+ARM GAS  /tmp/ccFu8JOx.s 			page 103
 
 
  3541 046f 8A1F2D00 		.ascii	"\212\037-\000\232\251\376\347\"RZ\245B\325E\030FspK"
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3553 0543 DC7B0B6A 		.ascii	"\334{\013j\032\011v\310\267\330\016\031x\274\353\274"
  3553      1A0976C8 
  3553      B7D80E19 
-ARM GAS  /tmp/cc5L9raf.s 			page 104
+ARM GAS  /tmp/ccFu8JOx.s 			page 104
 
 
  3553      78BCEBBC 
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3565      236425DE 
  3565      38F07B9A 
  3566 0620 5349503C 		.ascii	"SIP<xM\000\257\247\015\012\332q\332\000\332\017\377"
-ARM GAS  /tmp/cc5L9raf.s 			page 105
+ARM GAS  /tmp/ccFu8JOx.s 			page 105
 
 
  3566      784D00AF 
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3577      9F8D6CF5 
  3577      A58791B7 
  3577      F31E8F18 
-ARM GAS  /tmp/cc5L9raf.s 			page 106
+ARM GAS  /tmp/ccFu8JOx.s 			page 106
 
 
  3577      0C
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3589      89E8
  3590 07d0 8C7A1E16 		.ascii	"\214z\036\026\216\034\350\245g\375R~z]\204\375\260\014"
  3590      8E1CE8A5 
-ARM GAS  /tmp/cc5L9raf.s 			page 107
+ARM GAS  /tmp/ccFu8JOx.s 			page 107
 
 
  3590      67FD527E 
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3601      5286B7B6 
  3601      D07D57B4 
  3601      13C06D81 
-ARM GAS  /tmp/cc5L9raf.s 			page 108
+ARM GAS  /tmp/ccFu8JOx.s 			page 108
 
 
  3602 08b4 DF26630E 		.ascii	"\337&c\016\310\231\246\250\271G\201\273X\374C}\251\037"
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3613      43BAF92A 
  3613      24D712D4 
  3614 0985 8D21D4CA 		.ascii	"\215!\324\312\215\242\217\353\336\204\371\317\275CF"
-ARM GAS  /tmp/cc5L9raf.s 			page 109
+ARM GAS  /tmp/ccFu8JOx.s 			page 109
 
 
  3614      8DA28FEB 
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3626 0a56 C5FCA600 		.ascii	"\305\374\246\000b\230\362\273X\221\223\255\3009\214"
  3626      6298F2BB 
  3626      589193AD 
-ARM GAS  /tmp/cc5L9raf.s 			page 110
+ARM GAS  /tmp/ccFu8JOx.s 			page 110
 
 
  3626      C0398C
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3638      0D110643 
  3638      2F4794D0 
  3638      A4316A34 
-ARM GAS  /tmp/cc5L9raf.s 			page 111
+ARM GAS  /tmp/ccFu8JOx.s 			page 111
 
 
  3638      03DA
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3650      F4A9C567 
  3650      5998F735 
  3650      1CF726F5 
-ARM GAS  /tmp/cc5L9raf.s 			page 112
+ARM GAS  /tmp/ccFu8JOx.s 			page 112
 
 
  3650      05
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3661      1BCD74A3 
  3662 0cec 6DA660B0 		.ascii	"m\246`\260jd\312\321\324\027\203i\347\213\260\204\001"
  3662      6A64CAD1 
-ARM GAS  /tmp/cc5L9raf.s 			page 113
+ARM GAS  /tmp/ccFu8JOx.s 			page 113
 
 
  3662      D4178369 
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3673      475B76E8 
  3673      07C88AC9 
  3673      1465D248 
-ARM GAS  /tmp/cc5L9raf.s 			page 114
+ARM GAS  /tmp/ccFu8JOx.s 			page 114
 
 
  3673      3317
@@ -6838,7 +6838,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3684      1DAC3F1C 
  3685 0eab C1960FC7 		.ascii	"\301\226\017\307\305\230<\034_)\353\217t\022\374$F^"
  3685      C5983C1C 
-ARM GAS  /tmp/cc5L9raf.s 			page 115
+ARM GAS  /tmp/ccFu8JOx.s 			page 115
 
 
  3685      5F29EB8F 
@@ -6898,7 +6898,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3697 0f82 F02B1673 		.ascii	"\360+\026s\235\351x\204\352\361;\244)|\276i\337B\273"
  3697      9DE97884 
  3697      EAF13BA4 
-ARM GAS  /tmp/cc5L9raf.s 			page 116
+ARM GAS  /tmp/ccFu8JOx.s 			page 116
 
 
  3697      297CBE69 
@@ -6958,7 +6958,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3709      909D62C8 
  3709      FB5B6837 
  3709      9942C953 
-ARM GAS  /tmp/cc5L9raf.s 			page 117
+ARM GAS  /tmp/ccFu8JOx.s 			page 117
 
 
  3709      C71D
@@ -7018,7 +7018,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3721      B7FFF4E5 
  3721      DB9FEEF8 
  3721      48F286
-ARM GAS  /tmp/cc5L9raf.s 			page 118
+ARM GAS  /tmp/ccFu8JOx.s 			page 118
 
 
  3722 1135 A87BBBE6 		.ascii	"\250{\273\346\303];\277\371@\363\241D\276_\243\366\364"
@@ -7078,7 +7078,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3733      FED657A1 
  3733      3DE8A177 
  3733      F3D9ABB5 
-ARM GAS  /tmp/cc5L9raf.s 			page 119
+ARM GAS  /tmp/ccFu8JOx.s 			page 119
 
 
  3733      F3
@@ -7138,7 +7138,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3744      A7
  3745 12dd 45CFAE4D 		.ascii	"E\317\256Mn\373>\343\233\237j<=\377\215\306\341b\356"
  3745      6EFB3EE3 
-ARM GAS  /tmp/cc5L9raf.s 			page 120
+ARM GAS  /tmp/ccFu8JOx.s 			page 120
 
 
  3745      9B9F6A3C 
@@ -7198,7 +7198,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3757 13b1 A7BBF77C 		.ascii	"\247\273\367|\276\307\365S(d\327\317\215~\274t\036:"
  3757      BEC7F553 
  3757      2864D7CF 
-ARM GAS  /tmp/cc5L9raf.s 			page 121
+ARM GAS  /tmp/ccFu8JOx.s 			page 121
 
 
  3757      8D7EBC74 
@@ -7213,7 +7213,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3759      F3FF00
  3760 13e0 7121FF1A 		.ascii	"q!\377\032"
  3761              		.text
- 3762              		.section	.gnu.lto_.symtab.faf52a9a02a60471,"e",%progbits
+ 3762              		.section	.gnu.lto_.symtab.a64513c06e13f8cc,"e",%progbits
  3763 0000 5F5F6368 		.ascii	"__ch_delegate_fn0\000"
  3763      5F64656C 
  3763      65676174 
@@ -7258,7 +7258,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3785 0078 00000000 		.ascii	"\000\000\000\000\000\000\000\000"
  3785      00000000 
  3786 0080 57010000 		.ascii	"W\001\000\000"
-ARM GAS  /tmp/cc5L9raf.s 			page 122
+ARM GAS  /tmp/ccFu8JOx.s 			page 122
 
 
  3787 0084 5F5F6368 		.ascii	"__ch_delegate_fn4\000"
@@ -7318,7 +7318,7 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3817      6752656C 
  3817      65617365 
  3817      00
-ARM GAS  /tmp/cc5L9raf.s 			page 123
+ARM GAS  /tmp/ccFu8JOx.s 			page 123
 
 
  3818 013a 00       		.ascii	"\000"
@@ -7377,12 +7377,12 @@ ARM GAS  /tmp/cc5L9raf.s 			page 1
  3843              		.comm	__gnu_lto_v1,1,1
  3844              		.comm	__gnu_lto_slim,1,1
  3845              		.ident	"GCC: (GNU Tools for Arm Embedded Processors 9-2019-q4-major) 9.2.1 20191025 (release) [ARM
-ARM GAS  /tmp/cc5L9raf.s 			page 124
+ARM GAS  /tmp/ccFu8JOx.s 			page 124
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 chdelegates.c
-     /tmp/cc5L9raf.s:41     .gnu.debuglto_.debug_info:0000000000000000 chdelegates.c.a643f2a6
+     /tmp/ccFu8JOx.s:41     .gnu.debuglto_.debug_info:0000000000000000 chdelegates.c.a643f2a6
                             *COM*:0000000000000001 __gnu_lto_v1
                             *COM*:0000000000000001 __gnu_lto_slim
 

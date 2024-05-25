@@ -37,12 +37,12 @@
 #define DEBUGPORT                   SD2
 #define OSTRICHPORT                 SDU1
 #define OSTRICHUSB                  TRUE
-#define DEBUGLEVEL                  3  // can go up to 3
+#define DEBUGLEVEL                  0  // can go up to 3
 //#define PORTAB_BLINK_LED1           PAL_LINE(GPIOF, 9U)// LINE_LED
 //#define PORTAB_BLINK_LED1           LINE_LED
 
 #define DEBUGFUNCTIONS              FALSE
-#define VMAJOR                      16
+#define VMAJOR                      1
 #define VMINOR                      0
 /*===========================================================================*/
 /* Module pre-compile time settings.                                         */

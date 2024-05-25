@@ -65,19 +65,21 @@ uint8_t tdo_expected[MAX_SIZE];
 void set_port(uint8_t p, uint8_t val){
 	static uint32_t BSRR_TMS, BSRR_TDI;
 
-	//if (p == TMS && val == 0) BSRR_TMS = (TMS_Pin << 16);
-	//if (p == TMS && val == 1) BSRR_TMS = (TMS_Pin);
-	//if (p == TDI && val == 0) BSRR_TDI = (TDI_Pin << 16);
-	//if (p == TDI && val == 1) BSRR_TDI = (TDI_Pin);
-//
-	///* clock TMS and TDI on falling TCK */
-	//if (p == TCK) {
-	//	if (val == 0) {
-	//		XSVF_GPIO_BSRR = BSRR_TMS | BSRR_TDI | (TCK_Pin << 16);
-	//	} else {
-	//		XSVF_GPIO_BSRR = TCK_Pin;
-	//	}
-	//}
+	if (p == TMS && val == 0) BSRR_TMS = ((1 << TMS_Pin) << 16);
+	if (p == TMS && val == 1) BSRR_TMS = ((1 << TMS_Pin));
+	if (p == TDI && val == 0) BSRR_TDI = ((1 << TDI_Pin) << 16);
+	if (p == TDI && val == 1) BSRR_TDI = ((1 << TDI_Pin));
+
+	/* clock TMS and TDI on falling TCK */
+	if (p == TCK) {
+		if (val == 0) {
+			//chprintf(dbg, "Clock Low\r\n");
+			XSVF_GPIO_BSRR = BSRR_TMS | BSRR_TDI | ((1 << TCK_Pin) << 16);
+		} else {
+			//chprintf(dbg, "Clock Hi\r\n");
+			XSVF_GPIO_BSRR = (1 << TCK_Pin);
+		}
+	}
 }
 
 void pulse_clock(void){
@@ -86,9 +88,17 @@ void pulse_clock(void){
 	set_port(TCK,0);
 }
 
+void wait_nops(void){
+    __NOP();
+    __NOP();
+    __NOP();
+    __NOP();
+}
+
 /* Wait at least the specified number of microsec. */
 void delay(uint32_t microsec){
 //	_delay_ms(microsec>>12);
+	wait_nops();
 	set_port(TCK,0);
 	while (--microsec > 0) {
 		set_port(TCK,1);
@@ -225,58 +235,78 @@ static int sdr(int flags){
 	delay(run_test);
 	return 0;
 }
-int read_byte(uint8_t *data){
-	return 0;
+void read_byte(uint8_t *data, uint8_t *buf){
+	*data = *buf;
 }
-int read_bytes(uint8_t *data, int len){
-	return 0;
+
+uint8_t read_bytes(uint8_t *data, uint8_t *buf, int len){
+	uint8_t i=0;
+	for (i=0; i < len; i++){
+		data[i] = *(buf++);
+	}
+	return len;
 }
-int read_word(uint16_t *data){
-	return 0;
+
+uint8_t read_long(uint32_t *data, uint8_t *buf){
+	uint32_t temp = *(buf++) * 16777216;
+	temp += *(buf++) * 65536;
+	temp += *(buf++) * 256;
+	temp += *(buf++);
+	*data = temp;
+	return 4;
 }
-int read_long(uint32_t *data){
-	return 0;
-}
+
 void fail(void){
+		chprintf(dbg, "---------FAIL!\r\n");
 }
 
-void success(void){
-}
-
-/* parse the xsvf file and pump the bits */
-int xsvf_main(void){
-	uint8_t inst; /* instruction */
+uint16_t write_xsvf(uint16_t len, uint8_t * buf){
+	uint16_t i=0; // Counter variable
 	uint8_t length; /* hold the length of the arguments to read in */
-	while (1)
-	{
-		//inst = read_next_instr();
+	uint8_t inst; /* instruction */
+	uint8_t temp, tlen;
+	uint32_t temp32;
+	static uint16_t sdr_bytes;
+	// len is the total length of the xsvf file
 
-		switch (inst) {
+	chprintf(dbg, "XSVF: Length: %d\r\n", len);
+	while (i < len){
+		chprintf(dbg, "%02X ", buf[i]);
+		switch (buf[i++]) {
+
 		case XCOMPLETE:
+			chprintf(dbg, "Complete. %d\r\n", i);
 			break;
 
 		case XTDOMASK:
-			READ_TDO_MASK();
+			i += read_bytes(tdo_mask, &(buf[i]), sdr_bytes);
+			//chprintf(dbg, "Set TDOMASK to %02X %02X %02X %02X\r\n", tdo_mask[0], tdo_mask[1], tdo_mask[2], tdo_mask[3]);
 			break;
 
 		case XREPEAT:
-			read_byte(&repeat);
+			read_byte(&repeat, &(buf[i++]));
+			//chprintf(dbg, "Set REPEAT to %02X\r\n", repeat);
 			break;
 
 		case XRUNTEST:
-			read_long(&run_test);
+			i += read_long(&run_test, &(buf[i]));
+			//chprintf(dbg, "Set RUNTEST to %08X\r\n", run_test);
 			break;
 
 		case XSIR:
-			read_byte(&length);
-			read_bytes(tdi_value,BYTES(length));
+			read_byte(&temp, &(buf[i++]));
+			tlen = (temp>>3);
+			chprintf(dbg, "XSIR Read %d Bytes\r\n", tlen);
+			i += read_bytes(tdi_value, &(buf[i]), tlen);
+			chprintf(dbg, "Set TDIVAL to %02X %02X %02X %02X\r\n", tdi_value[0], tdi_value[1], tdi_value[2], tdi_value[3]);
 			state_goto(STATE_SHIFT_IR);
-			shift(SDR_END, tdi_value, 0, length);
+			shift(SDR_END, tdi_value, 0, temp);
 			state_goto(STATE_RTI);
 			break;
 
 		case XSDR:
-			READ_TDI_VALUE();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
+			chprintf(dbg, "Set TDIVAL to %02X %02X %02X %02X\r\n", tdi_value[0], tdi_value[1], tdi_value[2], tdi_value[3]);
 			if (sdr(SDR_FULL|SDR_CHECK)) {
 				fail();
 				return 0;
@@ -284,12 +314,17 @@ int xsvf_main(void){
 			break;
 
 		case XSDRSIZE:
-			read_long(&sdr_size);
+			i += read_long(&temp32, &(buf[i]));
+			sdr_bytes = temp32;
+			sdr_bytes = (sdr_bytes+7)>>3;
+			chprintf(dbg, "Set XDRSIZE to %04X or %04X\r\n", temp32, sdr_bytes);
 			break;
 
 		case XSDRTDO:
-			READ_TDI_VALUE();
-			READ_TDO_EXPECTED();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
+			i += read_bytes(tdo_expected, &(buf[i]), sdr_bytes);
+			chprintf(dbg, "Set TDIVAL to %02X %02X %02X %02X\r\n", tdi_value[0], tdi_value[1], tdi_value[2], tdi_value[3]);
+			chprintf(dbg, "Set TDOEXP to %02X %02X %02X %02X\r\n", tdo_expected[0], tdo_expected[1], tdo_expected[2], tdo_expected[3]);
 			if (sdr(SDR_FULL|SDR_CHECK)) {
 				fail();
 				return 0;
@@ -297,24 +332,23 @@ int xsvf_main(void){
 			break;
 
 		case XSDRB:
-			READ_TDI_VALUE();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
 			sdr(SDR_BEGIN|SDR_NOCHECK);
 			break;
 
 		case XSDRC:
-			READ_TDI_VALUE();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
 			sdr(SDR_CONTINUE|SDR_NOCHECK);
 			break;
 
 		case XSDRE:
-			READ_TDI_VALUE();
-
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
 			sdr(SDR_END|SDR_NOCHECK);
 			break;
 
 		case XSDRTDOB:
-			READ_TDI_VALUE();
-			READ_TDO_EXPECTED();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
+			i += read_bytes(tdo_expected, &(buf[i]), sdr_bytes);
 			if (sdr(SDR_BEGIN|SDR_CHECK)) {
 				fail();
 				return 0;
@@ -322,8 +356,8 @@ int xsvf_main(void){
 			break;
 
 		case XSDRTDOC:
-			READ_TDI_VALUE();
-			READ_TDO_EXPECTED();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
+			i += read_bytes(tdo_expected, &(buf[i]), sdr_bytes);
 			if (sdr(SDR_CONTINUE|SDR_CHECK)) {
 				fail();
 				return 0;
@@ -331,8 +365,8 @@ int xsvf_main(void){
 			break;
 
 		case XSDRTDOE:
-			READ_TDI_VALUE();
-			READ_TDO_EXPECTED();
+			i += read_bytes(tdi_value, &(buf[i]), sdr_bytes);
+			i += read_bytes(tdo_expected, &(buf[i]), sdr_bytes);
 			if (sdr(SDR_END|SDR_CHECK)) {
 				fail();
 				return 0;
@@ -340,8 +374,8 @@ int xsvf_main(void){
 			break;
 
 		case XSETSDRMASKS:
-			read_bytes(address_mask,BYTES(sdr_size));
-			read_bytes(data_mask,BYTES(sdr_size));
+			i += read_bytes(address_mask, &(buf[i]), sdr_bytes);
+			i += read_bytes(data_mask, &(buf[i]), sdr_bytes);
 			break;
 
 		case XSDRINC:
@@ -350,7 +384,8 @@ int xsvf_main(void){
 			break;
 
 		case XSTATE:
-			read_byte(&inst);
+			read_byte(&inst, &(buf[i++]));
+			//chprintf(dbg, "Goto STATE: %02X\r\n", inst);
 			state_goto(inst);
 			break;
 
@@ -358,13 +393,10 @@ int xsvf_main(void){
 			fail();
 			return 0;
 		}
-	}
-}
 
-void write_xsvf(uint8_t * buf){
-	//   1     2     3     4   
-	// state count byte0 byte1 ... 
-chprintf(dbg, "XSVF (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", buf[0], buf[1], buf[2], buf[3], buf[4]);
+	}
+	return 1;
+	//chprintf(dbg, "\r\n");
 }
 
 void xsvf_init(void){
@@ -372,8 +404,8 @@ void xsvf_init(void){
   TDI_IDLE;
   TMS_IDLE;
   TCK_IDLE;
-  palSetLineMode(TDI, PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
-  palSetLineMode(TMS, PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
-  palSetLineMode(TCK, PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
+  palSetLineMode(TDI_PIN, PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
+  palSetLineMode(TMS_PIN, PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
+  palSetLineMode(TCK_PIN, PAL_MODE_OUTPUT_PUSHPULL | PAL_STM32_OSPEED_HIGHEST);
 
 }
