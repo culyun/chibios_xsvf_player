@@ -121,7 +121,11 @@ def expect_ok(ser):
         response = b'O'
     else:
         response = read(ser)
-    if response != b'O':
+    if response == b'X':
+        print(f'Response Error')
+    elif response == b'O':
+        print(f'Response OK.')
+    else:
         raise Exception('Response error')
 
 def write_xsvf(ser, data):
