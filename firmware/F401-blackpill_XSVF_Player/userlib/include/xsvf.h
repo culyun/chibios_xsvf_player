@@ -19,7 +19,7 @@
 #define TCK_Pin    14U
 #define TMS_Pin    15U
 #define TDI_PIN    PAL_LINE(GPIOC, TDI_Pin) // Output
-#define TDO_PIN    PAL_LINE(GPIOA, 0U) // Input
+#define TDO_PIN    PAL_LINE(GPIOB, 0U) // Input
 #define TCK_PIN    PAL_LINE(GPIOC, TCK_Pin) // Output
 #define TMS_PIN    PAL_LINE(GPIOC, TMS_Pin) // Output
 #define XSVF_GPIO_BSRR (GPIOC->BSRR.W)

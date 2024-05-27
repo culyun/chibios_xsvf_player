@@ -241,7 +241,7 @@ void debug_print_val1(char * text, uint16_t val){
 }
 
 //extern uint8_t buffer[256];
-static THD_WORKING_AREA(waCharacterInputThread, 32768);
+static THD_WORKING_AREA(waCharacterInputThread, 40000);
 static THD_FUNCTION(CharacterInputThread, arg) {
   uint8_t c;
   uint8_t tbuf[32768];
@@ -361,9 +361,11 @@ static THD_FUNCTION(CharacterInputThread, arg) {
             //if (DEBUGLEVEL >= 1){
             //  chprintf(dbg, "XSVF (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf[0], tbuf[1], tbuf[2], tbuf[3]);
             //}
-            if (write_xsvf(count, tbuf)) chprintf(ost, "O");
+            chprintf(ost, "Y");
+            if (write_xsvf(count, tbuf) == 0) chprintf(ost, "X");
           }
           else{
+            chprintf(ost, "X");
             chprintf(dbg, "Checksum ERROR\r\n");
           }
           break;          

@@ -125,6 +125,17 @@ def expect_ok(ser):
         print(f'Response Error')
     elif response == b'O':
         print(f'Response OK.')
+    elif response == b'Y':
+        print(f'Uplaod done.')
+        while 1:
+            response = read(ser)
+            if response == b'F':
+                break
+            else:
+                #time.sleep(0.5)
+                val = int.from_bytes(response, byteorder='big')
+                print(f'{val:02X}', end = '', file=sys.stdout, flush=True)
+
     else:
         raise Exception('Response error')
 
