@@ -8,27 +8,6 @@ from serial import SerialException
 ver = '1.0'
 port = '/dev/ttyACM0'
 
-class x_state(enum.Enum):
-    XCOMPLETE    = 0  # 0
-    XTDOMASK     = 1  # 1
-    XSIR         = 2  # 2
-    XSDR         = 3  # 3
-    XRUNTEST     = 4  # 4
-    XREPEAT      = 7  # 7
-    XSDRSIZE     = 8  # 8
-    XSDRTDO      = 9  # 9
-    XSETSDRMASKS = 10 # A
-    XSDRINC      = 11 # B
-    XSDRB        = 12 # C
-    XSDRC        = 13 # D
-    XSDRE        = 14 # E
-    XSDRTDOB     = 15 # F
-    XSDRTDOC     = 16 # 10
-    XSDRTDOE     = 17 # 11
-    XSTATE       = 18 # 12
-    XSIR2       = 254
-    XIDLE       = 255
-
 class bcolors:
     FAIL = '\033[91m'    #red
     OKGREEN = '\033[92m' #green
