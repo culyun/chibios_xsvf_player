@@ -18,6 +18,9 @@
 
 extern BaseSequentialStream *const ost;
 extern BaseSequentialStream *const dbg;
+//static uint8_t tbuf1[16384], tbuf2[16384], index;
+static BUFFER_ST buffers;
+static uint8_t serial[]={10,1,2,3,4,5,6,7,8};
 
 void debug_print_state(char * text, uint8_t val){
   if (DEBUGLEVEL >= 3){
@@ -240,12 +243,32 @@ void debug_print_val1(char * text, uint16_t val){
   }
 }
 
+thread_reference_t worktp = NULL;
+
 //extern uint8_t buffer[256];
-static THD_WORKING_AREA(waCharacterInputThread, 40000);
+static THD_WORKING_AREA(waWorkThread, 256);
+static THD_FUNCTION(WorkThread, arg){
+  (void)arg;
+  while (true){
+    msg_t msg = chThdSuspendS(&worktp);
+    switch (msg){
+      case XSVF_X:
+        chprintf(dbg, "XSVF Programming Chunk.... %d\r\n", msg);    
+        chThdSleepMilliseconds(1000); //do something for 1s
+        chprintf(dbg, "XSVF Done. %d\r\n", msg);    
+      break;
+      default:
+        chprintf(dbg, "Unknown state %d\r\n", msg);    
+      break;
+    }
+    chThdSleepMilliseconds(100);
+  }
+}
+
+static THD_WORKING_AREA(waCharacterInputThread, 256);
 static THD_FUNCTION(CharacterInputThread, arg) {
   uint8_t c;
-  uint8_t tbuf[32768];
-  uint8_t serial[]={10,1,2,3,4,5,6,7,8};
+  
   static uint16_t cntdwn, count;
   uint16_t i;
   int32_t address;
@@ -278,6 +301,9 @@ static THD_FUNCTION(CharacterInputThread, arg) {
       switch (state){
       case IDLE:
         cs = c;
+        buffers.bsize1 = 0;
+        buffers.bsize2 = 0;
+        buffers.bufp = &buffers.tbuf1[0];
         //end = chTimeAddX(chVTGetSystemTimeX(), TIME_MS2I(5));
         //chprintf(dbg, "Checksum 0 is %x\r\n", cs);
         switch (c){
@@ -348,7 +374,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
           break;
         case XSVF_Xnn:
           cs += c;
-          tbuf[cntdwn++] = c;
+          buffers.bufp[cntdwn++] = c;
           if (cntdwn == count){
             state = XSVF_XnCs;
             debug_print_state("State3: ", state);
@@ -358,14 +384,19 @@ static THD_FUNCTION(CharacterInputThread, arg) {
           state = IDLE;
           debug_print_state("State4: ", state);
           if (c == cs){
+            buffers.bsize1 = count; // size of data in buffer
+
             //if (DEBUGLEVEL >= 1){
-            //  chprintf(dbg, "XSVF (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf[0], tbuf[1], tbuf[2], tbuf[3]);
+            //  chprintf(dbg, "XSVF (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf1[0], tbuf1[1], tbuf1[2], tbuf1[3]);
             //}
-            chprintf(ost, "Y");
-            if (write_xsvf(count, tbuf) == 0) chprintf(ost, "X");
+            chprintf(ost, "Y"); // Checksum OK.
+            chprintf(dbg, "Wake Working Trhread up.\r\n");
+            chThdResume(&worktp, XSVF_X);
+            chprintf(dbg, "Back.\r\n");
+            //if (write_xsvf(count, buffers.bufp) == 0) chprintf(ost, "X"); // Checksum or Programming Error
           }
           else{
-            chprintf(ost, "X");
+            chprintf(ost, "X"); // Checksum or Programming Error
             chprintf(dbg, "Checksum ERROR\r\n");
           }
           break;          
@@ -397,7 +428,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         case WRITE_nMLB:  //19 Here are the Bytes coming
           cs += c;
           //chprintf(dbg, "Countdown1: %i\r\n", cntdwn);
-          tbuf[cntdwn++] = c;
+          buffers.bufp[cntdwn++] = c;
           //chprintf(dbg, "Countdown2: %u\r\n", cntdwn);
 
           //chprintf(dbg, "Char: %x\r\n", c);
@@ -415,13 +446,13 @@ static THD_FUNCTION(CharacterInputThread, arg) {
             checksum = 0;
             address += 0x10000*bankrw;
             if (DEBUGLEVEL >= 1){
-              chprintf(dbg, "Bulk Write (ML): 0x%6X, cnt: %03d, data: 0x%02X\r\n", address, count, tbuf[0]);
+              chprintf(dbg, "Bulk Write (ML): 0x%6X, cnt: %03d, data: 0x%02X\r\n", address, count, buffers.bufp[0]);
             }
-            //write_block(address, count, tbuf, 0);
+            //write_block(address, count, buffers.bufp, 0);
             //streamWrite(ost, (const unsigned char *)buffer, count);
             //cntdwn = count-1;
             //for (i=0; i<count; i++){
-            //  buffer[address + i] = tbuf[cntdwn--];
+            //  buffer[address + i] = buffers.bufp[cntdwn--];
             //}
 
             chprintf(ost, "O");
@@ -463,10 +494,10 @@ static THD_FUNCTION(CharacterInputThread, arg) {
             }
             //streamWrite(ost, (const unsigned char *)buffer, count);
             checksum = 0;
-            //read_block(address+0x10000*bankrw, count, tbuf, 0);
+            //read_block(address+0x10000*bankrw, count, buffers.bufp, 0);
             for (i=0; i<count; i++){
-              checksum += tbuf[i];
-              streamPut(ost, tbuf[i]);
+              checksum += buffers.bufp[i];
+              streamPut(ost, buffers.bufp[i]);
             }
             streamPut(ost, checksum);
           }
@@ -522,7 +553,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
           break;
           case BULK_ZWnBMB: //33  Here are the Bytes coming
             cs += c;
-            tbuf[zoff++] = c;
+            buffers.bufp[zoff++] = c;
             //chprintf(dbg, "%02x, %d\r\n", c, zoff);
             if (zoff == count){
               state = BULK_ZWnBMBCs;
@@ -535,9 +566,9 @@ static THD_FUNCTION(CharacterInputThread, arg) {
             debug_print_val1("Checksum: ", cs);
             if (c == cs){
               if (DEBUGLEVEL >= 1){
-                chprintf(dbg, "Bulk Write (ZW): %6X, cnt: %03d, data: %02X %02X %02X %02X ... %02X %02X\r\n", address, count, tbuf[0], tbuf[1], tbuf[2], tbuf[3], tbuf[254], tbuf[255]);
+                chprintf(dbg, "Bulk Write (ZW): %6X, cnt: %03d, data: %02X %02X %02X %02X ... %02X %02X\r\n", address, count, buffers.bufp[0], buffers.bufp[1], buffers.bufp[2], buffers.bufp[3], buffers.bufp[254], buffers.bufp[255]);
               }
-              //write_block(address, count, tbuf, 0);
+              //write_block(address, count, buffers.bufp, 0);
               chprintf(ost, "O");            }
             else{
               chprintf(dbg, "Checksum ERROR\r\n");
@@ -580,10 +611,10 @@ static THD_FUNCTION(CharacterInputThread, arg) {
 // 1              checksum = 0;
 // 1
 // 1              while (count){ //Blocks of 256 Bytes
-// 1                read_block(address, 256, tbuf, 0);
+// 1                read_block(address, 256, buffers.bufp, 0);
 // 1                for (i=0; i<256; i++){
-// 1                  checksum += tbuf[i];
-// 1                  streamPut(ost, tbuf[i]);
+// 1                  checksum += buffers.bufp[i];
+// 1                  streamPut(ost, buffers.bufp[i]);
 // 1                }
 // 1                address += 256;
 // 1                count--;
@@ -602,11 +633,11 @@ static THD_FUNCTION(CharacterInputThread, arg) {
               count --;
 
               while (count){ //Blocks of 256 Bytes
-                //tbuf[0] = read_next_byte();
-                tbuf[0] = 0;
+                //buffers.bufp[0] = read_next_byte();
+                buffers.bufp[0] = 0;
                 address++;
-                checksum += tbuf[0];
-                streamPut(ost, tbuf[0]);
+                checksum += buffers.bufp[0];
+                streamPut(ost, buffers.bufp[0]);
                 count--;
               }
               streamPut(ost, checksum);
@@ -827,7 +858,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         break;
       case CONFIG_Cn: //  Here are the Bytes coming
         cs += c;
-        tbuf[cntdwn++] = c;
+        buffers.bufp[cntdwn++] = c;
         if (cntdwn == count){
           debug_print_state("State2: ", state);
           state = CONFIG_CnCs;
@@ -838,9 +869,9 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         state = IDLE;
         if (c == cs){
           if (DEBUGLEVEL >= 1){
-            chprintf(dbg, "Config (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf[0], tbuf[1], tbuf[2], tbuf[3]);
+            chprintf(dbg, "Config (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, buffers.bufp[0], buffers.bufp[1], buffers.bufp[2], buffers.bufp[3]);
           }
-          //write_config(tbuf);
+          //write_config(buffers.bufp);
           chprintf(ost, "O");
         }
         else{
@@ -873,7 +904,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         break;
       case CLOCK_DWn: //  Here are the Bytes coming
         cs += c;
-        tbuf[cntdwn++] = c;
+        buffers.bufp[cntdwn++] = c;
         if (cntdwn == count){
           debug_print_state("State2: ", state);
           state = CLOCK_DWnCs;
@@ -889,9 +920,9 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         state = IDLE;
         if (c == cs){
           if (DEBUGLEVEL >= 1){
-            chprintf(dbg, "Clock (C): %02d, %02X, %02X, %02X, %02X, %02X, %02X, %02X, %02X, %02X, %02X\r\n", tbuf[0], tbuf[1], tbuf[2], tbuf[3], tbuf[4], tbuf[5], tbuf[6], tbuf[7], tbuf[8], tbuf[9], tbuf[10]);
+            chprintf(dbg, "Clock (C): %02d, %02X, %02X, %02X, %02X, %02X, %02X, %02X, %02X, %02X, %02X\r\n", buffers.bufp[0], buffers.bufp[1], buffers.bufp[2], buffers.bufp[3], buffers.bufp[4], buffers.bufp[5], buffers.bufp[6], buffers.bufp[7], buffers.bufp[8], buffers.bufp[9], buffers.bufp[10]);
           }
-          //write_clock(tbuf);
+          //write_clock(buffers.bufp);
           chprintf(ost, "O");
         }
         else{
@@ -902,13 +933,13 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         debug_print_state("State3: ", state);
         state = IDLE;
         if (c == cs){
-          //count = read_clock(tbuf);
+          //count = read_clock(buffers.bufp);
           count = 0;
           // Get Checksum of Serial Number
           temp=0;
           for (i=0;i<count;i++){
-            streamPut(ost, tbuf[i]);
-            temp += tbuf[i];
+            streamPut(ost, buffers.bufp[i]);
+            temp += buffers.bufp[i];
           }
           streamPut(ost, temp);
         }
@@ -926,7 +957,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         break;
       case PINS_Cn: //  Here are the Bytes coming
         cs += c;
-        tbuf[cntdwn++] = c;
+        buffers.bufp[cntdwn++] = c;
         if (cntdwn == count){
           debug_print_state("State2: ", state);
           state = PINS_CnCs;
@@ -937,9 +968,9 @@ static THD_FUNCTION(CharacterInputThread, arg) {
         state = IDLE;
         if (c == cs){
           if (DEBUGLEVEL >= 1){
-            chprintf(dbg, "Clock (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, tbuf[0], tbuf[1], tbuf[2], tbuf[3]);
+            chprintf(dbg, "Clock (C): cnt: %03d, data: %02X, %02X, %02X, %02X\r\n", count, buffers.bufp[0], buffers.bufp[1], buffers.bufp[2], buffers.bufp[3]);
           }
-          //write_pins(tbuf[0]);
+          //write_pins(buffers.bufp[0]);
           chprintf(ost, "O");
         }
         else{
@@ -959,5 +990,7 @@ static THD_FUNCTION(CharacterInputThread, arg) {
 }
 void start_ostrich_thread(void){
   chThdCreateStatic(waCharacterInputThread, sizeof(waCharacterInputThread), NORMALPRIO, CharacterInputThread, NULL);
+  chThdCreateStatic(waWorkThread, sizeof(waWorkThread), NORMALPRIO, WorkThread, NULL);
 }
+
 

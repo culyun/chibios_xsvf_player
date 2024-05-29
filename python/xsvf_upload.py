@@ -118,13 +118,17 @@ def expect_ok(ser):
     else:
         raise Exception('Response error')
 
+def split_file(data, size=16384):
+    #file = []
+    file = [data[i:i + size] for i in range(0, len(data), size)]  
+    print(f'Length total: {len(data)}, chunksize in: {size} Chunks: {len(file)}')
+    return file
+
 def write_xsvf(ser, data):
     #print('------------------------------  XSVF  ------------------------------')
     length = len(data)
     #print (f'Length of data: {length} or 0x{length:04x}')
-    if length > 32768:
-        print(f'Only file <= 32768 Bytes supported!')
-        exit()
+
     message = bytearray(b'X') # XSVF Write
     #print(f'Header: X, ', end = '')
     len_hi, len_low = length.to_bytes(2, byteorder='big')
@@ -141,7 +145,14 @@ def write_xsvf(ser, data):
     print(f'{bcolors.OKCYAN}Done!{bcolors.ENDC}')
 
 def main(ser, f):
-    write_xsvf(ser, f)
+    if len(f) > 32768:
+        print(f'Split file in 32k Chunks')
+        for idx,itm in enumerate(split_file(f)):
+            print(f'Writing: Index: {idx} Length: {len(itm)}')
+            write_xsvf(ser, itm)
+    else:
+        write_xsvf(ser, f)
+        print(f'Writing: File')
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -158,9 +169,9 @@ if __name__ == '__main__':
         print(f'{bcolors.FAIL}XSVF file not found!{bcolors.ENDC}')
         exit()
     size = len(f)
-    if (size > 32768):
-        print(f'Size of Infile too big with {len(f)} byte. (32k MAX!)')
-        exit()
+#    if (size > 32768):
+#        print(f'Size of Infile too big with {len(f)} byte. (32k MAX!)')
+#        exit()
     try:
         ser = Serial(port, 921200, timeout = 10, writeTimeout = 1)
     except IOError:

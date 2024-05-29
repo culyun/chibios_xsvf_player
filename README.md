@@ -9,4 +9,4 @@ Protocol is a modified Moates Ostrich Protocol.
 
 Firmware is based on ChibiOS 20 (trunk).
 
-Upload Time for an XC9572 is about 14s vs. 16s with the Platform Cable USB (DLC10) and xc3sprog.
+Upload Time for an XC9572 is about <14s vs. 16s with the Platform Cable USB (DLC10) and xc3sprog.

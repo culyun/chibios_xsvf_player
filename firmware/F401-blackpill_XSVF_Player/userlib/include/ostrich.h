@@ -62,6 +62,13 @@ typedef enum {
   UNHANDLED
 } char_state_t;
 
+typedef struct {
+  uint16_t bsize1;
+  uint16_t bsize2;
+  uint8_t * bufp;
+  uint8_t tbuf1[16384];
+  uint8_t tbuf2[16384];
+} BUFFER_ST;
 void start_ostrich_thread(void);
 
 #endif /* USERLIB_INCLUDE_OSTRICH_H_ */

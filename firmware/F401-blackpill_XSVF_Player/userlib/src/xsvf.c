@@ -300,6 +300,18 @@ void fail(void){
 		chprintf(dbg, "---------FAIL!\r\n");
 }
 
+void send_response(uint16_t chunk, uint16_t pos){
+	if (pos > chunk) streamPut(ost, 1);          // 10%
+	else if (pos > chunk * 2) streamPut(ost, 2); // 20% 
+	else if (pos > chunk * 3) streamPut(ost, 3); // 30% 
+	else if (pos > chunk * 4) streamPut(ost, 4); // 40% 
+	else if (pos > chunk * 5) streamPut(ost, 5); // 50% 
+	else if (pos > chunk * 6) streamPut(ost, 6); // 60% 
+	else if (pos > chunk * 7) streamPut(ost, 7); // 70% 
+	else if (pos > chunk * 8) streamPut(ost, 8); // 80% 
+	else if (pos > chunk * 9) streamPut(ost, 9); // 90% 
+}
+
 uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 	uint16_t i=0; // Counter variable
 	uint8_t length; /* hold the length of the arguments to read in */
@@ -307,7 +319,7 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 	uint32_t temp32;
 	//static uint16_t sdr_bytes;
 	// len is the total length of the xsvf file
-
+	uint16_t chunk = len / 10;
 	//chprintf(dbg, "XSVF: Length: %d\r\n", len);
 	while (i < len){
 		//chprintf(dbg, "%02X ", buf[i]);
@@ -315,24 +327,24 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 
 		case XCOMPLETE: // 00
 			chprintf(dbg, "Complete. %d\r\n", i);
-			chprintf(ost, "F");
+			chprintf(ost, "F"); // Done Programming
 			break;
 
 		case XTDOMASK: // 01
 			i += read_bytes(tdo_mask, &(buf[i]), BYTES(sdr_size));
-			streamPut(ost, 1);
+			// streamPut(ost, 1);
 			//chprintf(dbg, "Set TDOMASK to %02X %02X %02X %02X\r\n", tdo_mask[0], tdo_mask[1], tdo_mask[2], tdo_mask[3]);
 			break;
 
 		case XREPEAT: // 07
 			read_byte(&repeat, &(buf[i++]));
-			streamPut(ost, 7);
+			// streamPut(ost, 7);
 			//chprintf(dbg, "Set REPEAT to %02X\r\n", repeat);
 			break;
 
 		case XRUNTEST: // 04
 			i += read_long(&run_test, &(buf[i]));
-			streamPut(ost, 4);
+			// streamPut(ost, 4);
 			//chprintf(dbg, "Set RUNTEST to %08X\r\n", run_test);
 			break;
 
@@ -344,7 +356,7 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 			state_goto(STATE_SHIFT_IR);
 			shift(SDR_END, tdi_value, 0, length);
 			state_goto(STATE_RTI);
-			streamPut(ost, 2);
+			// streamPut(ost, 2);
 			break;
 
 		case XSDR: // 03
@@ -354,7 +366,7 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 				fail();
 				return 0;
 			}
-			streamPut(ost, 3);
+			// streamPut(ost, 3);
 			break;
 
 		case XSDRSIZE: // 08
@@ -362,7 +374,7 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 			//sdr_size = temp32;
 			//sdr_size = (sdr_size+7)>>3; // The +7 should be useless since 7>>3 == 0!
 			//chprintf(dbg, "Set XDRSIZE to %04X or %04X\r\n", sdr_size, BYTES(sdr_size));
-			streamPut(ost, 8);
+			// streamPut(ost, 8);
 			break;
 
 		case XSDRTDO: // 09
@@ -374,25 +386,25 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 				fail();
 				return 0;
 			}
-			//streamPut(ost, 9);
+			//// streamPut(ost, 9);
 			break;
 
 		case XSDRB:
 			i += read_bytes(tdi_value, &(buf[i]), BYTES(sdr_size));
 			sdr(SDR_BEGIN|SDR_NOCHECK);
-			streamPut(ost, 12);
+			// streamPut(ost, 12);
 			break;
 
 		case XSDRC:
 			i += read_bytes(tdi_value, &(buf[i]), BYTES(sdr_size));
 			sdr(SDR_CONTINUE|SDR_NOCHECK);
-			streamPut(ost, 13);
+			// streamPut(ost, 13);
 			break;
 
 		case XSDRE:
 			i += read_bytes(tdi_value, &(buf[i]), BYTES(sdr_size));
 			sdr(SDR_END|SDR_NOCHECK);
-			streamPut(ost, 14);
+			// streamPut(ost, 14);
 			break;
 
 		case XSDRTDOB:
@@ -402,7 +414,7 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 				fail();
 				return 0;
 			}
-			streamPut(ost, 15);
+			// streamPut(ost, 15);
 			break;
 
 		case XSDRTDOC:
@@ -412,7 +424,7 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 				fail();
 				return 0;
 			}
-			streamPut(ost, 16);
+			// streamPut(ost, 16);
 			break;
 
 		case XSDRTDOE:
@@ -422,13 +434,13 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 				fail();
 				return 0;
 			}
-			streamPut(ost, 17);
+			// streamPut(ost, 17);
 			break;
 
 		case XSETSDRMASKS:
 			i += read_bytes(address_mask, &(buf[i]), BYTES(sdr_size));
 			i += read_bytes(data_mask, &(buf[i]), BYTES(sdr_size));
-			streamPut(ost, 10);
+			// streamPut(ost, 10);
 			break;
 
 		case XSDRINC:
@@ -440,14 +452,14 @@ uint16_t write_xsvf(uint16_t len, uint8_t * buf){
 			read_byte(&inst, &(buf[i++]));
 			//chprintf(dbg, "Goto STATE: %02X\r\n", inst);
 			state_goto(inst);
-			streamPut(ost, 18);
+			// streamPut(ost, 18);
 			break;
 
 		default:
 			fail();
 			return 0;
 		}
-
+		send_response(chunk, i);
 	}
 	return 1;
 	//chprintf(dbg, "\r\n");
