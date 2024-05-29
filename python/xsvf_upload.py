@@ -101,19 +101,19 @@ def expect_ok(ser):
     else:
         response = read(ser)
     if response == b'X':
-        print(f'Response Error')
+        print(f'Checksum or Programming Error')
     elif response == b'O':
         print(f'Response OK.')
     elif response == b'Y':
         print(f'Uplaod done.')
-        while 1:
+        while 1: # Wait for programming
             response = read(ser)
-            if response == b'F':
+            if response == b'F': # Done Programming
                 break
             else:
                 #time.sleep(0.5)
-                val = int.from_bytes(response, byteorder='big')
-                print(f'{val:02X}', end = '', file=sys.stdout, flush=True)
+                val = int.from_bytes(response, byteorder='big')*10
+                print(f'Progress: {val:02d}%', end = '\r', file=sys.stdout, flush=True)
 
     else:
         raise Exception('Response error')
