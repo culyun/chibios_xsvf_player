@@ -32,6 +32,7 @@
  */
 
 #define STM32F4xx_MCUCONF
+#define STM32F411_MCUCONF
 
 /*
  * HAL driver system settings.
@@ -74,7 +75,7 @@
 #define STM32_NO_INIT                       FALSE
 #define STM32_HSI_ENABLED                   TRUE
 #define STM32_LSI_ENABLED                   TRUE
-#define STM32_HSE_ENABLED                   TRUE//FALSE
+#define STM32_HSE_ENABLED                   TRUE
 #define STM32_LSE_ENABLED                   FALSE
 #define STM32_CLOCK48_REQUIRED              TRUE
 #define STM32_SW                            STM32_SW_PLL
@@ -135,7 +136,7 @@
 #define STM32_GPT_USE_TIM2                  FALSE
 #define STM32_GPT_USE_TIM3                  FALSE
 #define STM32_GPT_USE_TIM4                  FALSE
-#define STM32_GPT_USE_TIM5                  TRUE//FALSE
+#define STM32_GPT_USE_TIM5                  TRUE
 #define STM32_GPT_USE_TIM9                  FALSE
 #define STM32_GPT_USE_TIM11                 FALSE
 #define STM32_GPT_TIM1_IRQ_PRIORITY         7
@@ -274,7 +275,7 @@
 /*
  * USB driver system settings.
  */
-#define STM32_USB_USE_OTG1                  TRUE//FALSE
+#define STM32_USB_USE_OTG1                  TRUE
 #define STM32_USB_OTG1_IRQ_PRIORITY         14
 #define STM32_USB_OTG1_RX_FIFO_SIZE         512
 #define STM32_USB_OTG_THREAD_PRIO           LOWPRIO
